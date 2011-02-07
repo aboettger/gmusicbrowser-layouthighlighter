@@ -33,9 +33,25 @@
         </context>
 
         <context id="tag" style-ref="keyword" end-at-line-end="true">
-		      <start>_*(HP|VP|HB|VB|MB|NB|SM|TB)</start>
-		      <end>[A-Za-z]+[0-9]*</end>
+          <start>([-|_]{1}[A-Z]+)|(HP|VP|HB|VB|MB|NB|SM|TB|EB|FB|FR|SB|AB){1}</start>
+          <end>[A-Za-z]+[0-9]*|[^\(]</end>
         </context>
+
+<!--
+        <context id="tag-names" style-ref="keyword">
+          <keyword>Text</keyword>
+          <keyword>Play</keyword>
+          <keyword>Stop</keyword>
+          <keyword>Prev</keyword>
+          <keyword>Next</keyword>
+          <keyword>Title</keyword>
+          <keyword>Artist</keyword>
+          <keyword>Album</keyword>
+          <keyword>Filler</keyword>
+          <keyword>MenuItem</keyword>
+          <keyword>SeparatorMenuItem</keyword>
+        </context>
+-->
 
         <context id="include" style-ref="preprocessor">
             <match>^.*\]\s*based\son\s(.*)</match>
