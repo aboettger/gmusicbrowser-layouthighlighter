@@ -1,3 +1,4 @@
 GtkSourceView2:
+http://library.gnome.org/devel/gtksourceview/stable/lang-tutorial.html
 ---------------
 sudo cp GtkSourceView2/layouts.lang /usr/share/gtksourceview-2.0/language-specs/
