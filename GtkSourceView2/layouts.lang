@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<language id="gmusicbrowser_layouts" _name="gmusicbrowser Layout" version="2.0" _section="Sources">
+  <metadata>
+    <property name="mimetypes">text/plain</property>
+    <property name="globs">layouts</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" _name="Comment" map-to="def:comment"/>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+    <style id="string" _name="String" map-to="def:string"/>
+    <style id="tag" _name="Tag" map-to="def:tag"/>
+    <style id="type" _name="Data Type" map-to="def:type"/>
+    <style id="preprocessor" _name="Preprocessor" map-to="def:preprocessor"/>
+    <style id="common-defines" _name="Common Defines" map-to="def:special-constant"/>
+    <style id="included-file" _name="Included File" map-to="def:string"/>
+  </styles>
+  <default-regex-options case-sensitive="true" />
+
+  <definitions>
+    <context id="gmusicbrowser_layouts">
+      <include>
+
+        <context id="line-comment" style-ref="comment" end-at-line-end="true">
+          <start>#</start>
+        </context>
+
+        <context id="group" style-ref="keyword" end-at-line-end="true">
+          <start>^\[</start>
+          <end>\]</end>
+        </context>
+
+        <context id="tag" style-ref="keyword" end-at-line-end="true">
+		      <start>_*(HP|VP|HB|VB|MB|NB|SM|TB)</start>
+		      <end>[A-Za-z]+[0-9]*</end>
+        </context>
+
+        <context id="include" style-ref="preprocessor">
+            <match>^.*\]\s*based\son\s(.*)</match>
+            <include>
+                <context id="included-file" sub-pattern="1" style-ref="included-file"/>
+            </include>
+        </context>
+
+        <context id="string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+            <start>"</start>
+            <end>"</end>
+        </context>
+
+        <context id="types" style-ref="type" class="type">
+            <keyword>command</keyword>
+            <keyword>togglewidget</keyword>
+            <keyword>tabtitle</keyword>
+            <keyword>label</keyword>
+            <keyword>mode</keyword>
+            <keyword>typesubmenu</keyword>
+            <keyword>minheight</keyword>
+            <keyword>maxheight</keyword>
+            <keyword>minwidth</keyword>
+            <keyword>maxwidth</keyword>
+            <keyword>minsize</keyword>
+            <keyword>maxsize</keyword>
+            <keyword>markup</keyword>
+        </context>
+      </include>
+    </context>
+  </definitions>
+</language>
+
