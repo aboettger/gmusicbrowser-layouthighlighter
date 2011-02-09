@@ -11,7 +11,7 @@
     <style id="comment" _name="Comment" map-to="def:comment"/>
     <style id="keyword" _name="Keyword" map-to="def:keyword"/>
     <style id="string" _name="String" map-to="def:string"/>
-    <style id="tag" _name="Tag" map-to="def:tag"/>
+    <style id="tag" _name="Tag" map-to="def:keyword"/>
     <style id="type" _name="Data Type" map-to="def:type"/>
     <style id="preprocessor" _name="Preprocessor" map-to="def:preprocessor"/>
     <style id="common-defines" _name="Common Defines" map-to="def:special-constant"/>
@@ -27,31 +27,15 @@
           <start>#</start>
         </context>
 
-        <context id="group" style-ref="keyword" end-at-line-end="true">
+        <context id="group" style-ref="keyword">
           <start>^\[</start>
           <end>\]</end>
         </context>
 
         <context id="tag" style-ref="keyword" end-at-line-end="true">
-          <start>([-|_]{1}[A-Z]+)|(HP|VP|HB|VB|MB|NB|SM|TB|EB|FB|FR|SB|AB){1}</start>
-          <end>[A-Za-z]+[0-9]*|[^\(]</end>
+          <start>[0-9]*[-_]{0,1}(HP|VP|HB|VB|MB|NB|SM|TB|EB|FB|FR|SB|AB)+[A-Za-z]+[0-9]*</start>
+          <end>[^a-z]</end>
         </context>
-
-<!--
-        <context id="tag-names" style-ref="keyword">
-          <keyword>Text</keyword>
-          <keyword>Play</keyword>
-          <keyword>Stop</keyword>
-          <keyword>Prev</keyword>
-          <keyword>Next</keyword>
-          <keyword>Title</keyword>
-          <keyword>Artist</keyword>
-          <keyword>Album</keyword>
-          <keyword>Filler</keyword>
-          <keyword>MenuItem</keyword>
-          <keyword>SeparatorMenuItem</keyword>
-        </context>
--->
 
         <context id="include" style-ref="preprocessor">
             <match>@([-_a-zA-Z0-9]+)</match>
@@ -60,25 +44,66 @@
             </include>
         </context>
 
-        <context id="string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+        <context id="string" style-ref="string" class="string" class-disabled="no-spell-check">
             <start>"</start>
             <end>"</end>
         </context>
 
-        <context id="types" style-ref="type" class="type">
-            <keyword>command</keyword>
-            <keyword>togglewidget</keyword>
-            <keyword>tabtitle</keyword>
-            <keyword>label</keyword>
-            <keyword>mode</keyword>
-            <keyword>typesubmenu</keyword>
-            <keyword>minheight</keyword>
-            <keyword>maxheight</keyword>
-            <keyword>minwidth</keyword>
-            <keyword>maxwidth</keyword>
-            <keyword>minsize</keyword>
-            <keyword>maxsize</keyword>
-            <keyword>markup</keyword>
+        <context id="author" style-ref="type" class="type">
+            <match>Author\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="title" style-ref="type" class="type">
+            <match>Title\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="type" style-ref="type" class="type">
+            <match>Type\s*=\s*(G[+]{0,1}|[FTBSQC]{0,1})</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="options_menuitem" style-ref="type" class="type">
+            <match>[0-9]*[-_]{0,1}MenuItem[0-9]*(\((.*)\))*</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="options_separatormenuitem" style-ref="type" class="type">
+            <match>[0-9]*[-_]{0,1}SeparatorMenuItem[0-9]*(\((.*)\))*</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="options_layoutitem" style-ref="type" class="type">
+            <match>[0-9]*[-_]{0,1}LayoutItem[0-9]*(\((.*)\))*</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="options_button" style-ref="type" class="type">
+            <match>[0-9]*[-_]{0,1}Button[0-9]*(\((.*)\))*</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="options_togglebutton" style-ref="type" class="type">
+            <match>[0-9]*[-_]{0,1}ToggleButton[0-9]*(\((.*)\))*</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+                <!--<context id="value" sub-pattern="2" style-ref="preprocessor"/>-->
+            </include>
         </context>
       </include>
     </context>
