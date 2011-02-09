@@ -23,6 +23,19 @@
     <context id="gmusicbrowser_layouts">
       <include>
 
+<context id="parameter" style-ref="keyword">
+    <keyword>label</keyword>
+    <keyword>command</keyword>
+    <keyword>togglewidget</keyword>
+
+
+</context>
+
+<context id="keywords" style-ref="keyword">
+<match>[0-9]*[-_]{0,1}(((Separator){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|FilterPane)[0-9]*</match>
+</context>
+
+
         <context id="line-comment" style-ref="comment" end-at-line-end="true">
           <start>#</start>
         </context>
@@ -49,60 +62,29 @@
             <end>"</end>
         </context>
 
-        <context id="author" style-ref="type" class="type">
+        <context id="char" style-ref="char" class="char" class-disabled="no-spell-check">
+            <start>'</start>
+            <end>'</end>
+        </context>
+
+        <context id="author" style-ref="keyword" class="type">
             <match>Author\s*=\s*(.*)</match>
             <include>
                 <context id="options" sub-pattern="1" style-ref="string"/>
             </include>
         </context>
 
-        <context id="title" style-ref="type" class="type">
+        <context id="title" style-ref="keyword" class="type">
             <match>Title\s*=\s*(.*)</match>
             <include>
                 <context id="options" sub-pattern="1" style-ref="string"/>
             </include>
         </context>
 
-        <context id="type" style-ref="type" class="type">
+        <context id="type" style-ref="keyword" class="type">
             <match>Type\s*=\s*(G[+]{0,1}|[FTBSQC]{0,1})</match>
             <include>
                 <context id="options" sub-pattern="1" style-ref="string"/>
-            </include>
-        </context>
-
-        <context id="options_menuitem" style-ref="type" class="type">
-            <match>[0-9]*[-_]{0,1}MenuItem[0-9]*(\((.*)\))*</match>
-            <include>
-                <context id="options" sub-pattern="1" style-ref="string"/>
-            </include>
-        </context>
-
-        <context id="options_separatormenuitem" style-ref="type" class="type">
-            <match>[0-9]*[-_]{0,1}SeparatorMenuItem[0-9]*(\((.*)\))*</match>
-            <include>
-                <context id="options" sub-pattern="1" style-ref="string"/>
-            </include>
-        </context>
-
-        <context id="options_layoutitem" style-ref="type" class="type">
-            <match>[0-9]*[-_]{0,1}LayoutItem[0-9]*(\((.*)\))*</match>
-            <include>
-                <context id="options" sub-pattern="1" style-ref="string"/>
-            </include>
-        </context>
-
-        <context id="options_button" style-ref="type" class="type">
-            <match>[0-9]*[-_]{0,1}Button[0-9]*(\((.*)\))*</match>
-            <include>
-                <context id="options" sub-pattern="1" style-ref="string"/>
-            </include>
-        </context>
-
-        <context id="options_togglebutton" style-ref="type" class="type">
-            <match>[0-9]*[-_]{0,1}ToggleButton[0-9]*(\((.*)\))*</match>
-            <include>
-                <context id="options" sub-pattern="1" style-ref="string"/>
-                <!--<context id="value" sub-pattern="2" style-ref="preprocessor"/>-->
             </include>
         </context>
       </include>
