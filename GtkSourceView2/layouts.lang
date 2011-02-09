@@ -54,7 +54,7 @@
 -->
 
         <context id="include" style-ref="preprocessor">
-            <match>^.*\]\s*based\son\s(.*)</match>
+            <match>@([-_a-zA-Z0-9]+)</match>
             <include>
                 <context id="included-file" sub-pattern="1" style-ref="included-file"/>
             </include>
