@@ -16,6 +16,7 @@
     <style id="preprocessor" _name="Preprocessor" map-to="def:preprocessor"/>
     <style id="common-defines" _name="Common Defines" map-to="def:special-constant"/>
     <style id="included-file" _name="Included File" map-to="def:string"/>
+    <style id="number" _name="Number" map-to="def:decimal"/>
   </styles>
   <default-regex-options case-sensitive="true" />
 
@@ -23,6 +24,39 @@
     <context id="gmusicbrowser_layouts">
       <include>
         <context id="parameter" style-ref="keyword">
+            <keyword>follow</keyword>
+            <keyword>shadow</keyword>
+            <keyword>hover_layout</keyword>
+            <keyword>hover_delay</keyword>
+            <keyword>transparent</keyword>
+            <keyword>hidden</keyword>
+            <keyword>ellipsize</keyword>
+            <keyword>insensitive</keyword>
+            <keyword>pad</keyword>
+            <keyword>songtree</keyword>
+            <keyword>font</keyword>
+            <keyword>interval</keyword>
+            <keyword>reflection</keyword>
+            <keyword>overlay</keyword>
+            <keyword>cols</keyword>
+            <keyword>noselector</keyword>
+            <keyword>suggest</keyword>
+            <keyword>grouping</keyword>
+            <keyword>fields</keyword>
+            <keyword>initsize</keyword>
+            <keyword>direct_mode</keyword>
+            <keyword>tabicon</keyword>
+            <keyword>colwidth</keyword>
+            <keyword>showbb</keyword>
+            <keyword>button</keyword>
+            <keyword>expand_max</keyword>
+            <keyword>text</keyword>
+            <keyword>relief</keyword>
+            <keyword>togglegroup</keyword>
+            <keyword>horizontal</keyword>
+            <keyword>markup</keyword>
+            <keyword>yalign</keyword>
+            <keyword>xalign</keyword>
             <keyword>label</keyword>
             <keyword>command</keyword>
             <keyword>togglewidget</keyword>
@@ -31,11 +65,34 @@
             <keyword>size</keyword>
             <keyword>widget</keyword>
             <keyword>tip</keyword>
+            <keyword>tabtitle</keyword>
+            <keyword>nb</keyword>
+            <keyword>hidebb</keyword>
+            <keyword>tabpos</keyword>
+            <keyword>page</keyword>
+            <keyword>pages</keyword>
+            <keyword>typesubmenu</keyword>
+            <keyword>group</keyword>
+            <keyword>maxheight</keyword>
+            <keyword>minheight</keyword>
+            <keyword>minwidth</keyword>
+            <keyword>maxwidth</keyword>
+            <keyword>minsize</keyword>
+            <keyword>maxsize</keyword>
+            <keyword>showcover</keyword>
+            <keyword>default</keyword>
+            <keyword>mode</keyword>
+        </context>
+
+        <context id="parameter_click" style-ref="keyword">
+          <match>click[1-9][0-9]*</match>
         </context>
 
         <context id="keywords" style-ref="keyword">
-          <match>[0-9]*[-_]{0,1}(((Separator){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|FilterPane|Visuals)[0-9]*</match>
+          <match>[0-9]*[-_]{0,1}(((Separator|Main){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|FilterPane|Visuals)[0-9]*</match>
         </context>
+
+
 
         <context id="line-comment" style-ref="comment" end-at-line-end="true">
           <start>#</start>
@@ -58,14 +115,20 @@
             </include>
         </context>
 
-        <context id="string" style-ref="string" class="string" class-disabled="no-spell-check">
+        <context id="string1" style-ref="string" class="string" class-disabled="no-spell-check">
             <start>"</start>
             <end>"</end>
         </context>
 
-        <context id="char" style-ref="char" class="char" class-disabled="no-spell-check">
+        <context id="string2" style-ref="string" class="string" class-disabled="no-spell-check">
             <start>'</start>
             <end>'</end>
+        </context>
+
+        <context id="numeric" style-ref="number">
+          <match extended="true">
+            [0-9]+|[0-9]*[.]{0,1}[0-9]*
+          </match>
         </context>
 
         <context id="author" style-ref="keyword" class="type">
@@ -83,7 +146,7 @@
         </context>
 
         <context id="type" style-ref="keyword" class="type">
-            <match>Type\s*=\s*(G[+]{0,1}|[FTBSQC]{0,1})</match>
+            <match>Type\s*=\s*(G[+]{0,1}|[FTBSQCD]{0,1})</match>
             <include>
                 <context id="options" sub-pattern="1" style-ref="string"/>
             </include>
