@@ -3,7 +3,7 @@
 <language id="gmusicbrowser_layouts" _name="gmusicbrowser Layout" version="2.0" _section="Sources">
   <metadata>
     <property name="mimetypes">text/plain</property>
-    <property name="globs">layouts</property>
+    <property name="globs">layouts;*.layout</property>
     <property name="line-comment-start">#</property>
   </metadata>
 
