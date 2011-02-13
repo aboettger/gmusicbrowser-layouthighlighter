@@ -82,6 +82,8 @@
             <keyword>showcover</keyword>
             <keyword>default</keyword>
             <keyword>mode</keyword>
+            <keyword>skin</keyword>
+            <keyword>handle_skin</keyword>
         </context>
 
         <context id="parameter_click" style-ref="keyword">
