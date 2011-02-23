@@ -84,6 +84,7 @@
             <keyword>mode</keyword>
             <keyword>skin</keyword>
             <keyword>handle_skin</keyword>
+            <keyword>activate</keyword>
         </context>
 
         <context id="parameter_click" style-ref="keyword">
@@ -91,7 +92,7 @@
         </context>
 
         <context id="keywords" style-ref="keyword">
-          <match>[0-9]*[-_]{0,1}(((Separator|Main){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|ExtraButtons|((H|V){1}Separator)|FilterPane|Visuals|Playlist|Pref|Stars|Filler|ShowHideWidget|Prev|Play|Next|Scale|Total|Title|LockSong|(Lock){0,1}Album|(Lock){0,1}Artist|VolumeIcon|SimpleSearch|Progress|((Queue|Reset|Play){0,1}Filter)|FilterLock|((Play|Queue|Hist){1}Item)|SongTree|Sort|((Queue|Edit|Song){1}List)|Text|Refresh|LabelsIcons)[0-9]*</match>
+          <match>[0-9]*[-_]{0,1}(((Separator|Main){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|ExtraButtons|((H|V){1}Separator)|FilterPane|Visuals|Playlist|Pref|Stars|Filler|ShowHideWidget|Prev|Play|Next|Scale|Total|Title|LockSong|(Lock){0,1}Album|(Lock){0,1}Artist|VolumeIcon|SimpleSearch|Progress|((Queue|Reset|Play){0,1}Filter)|FilterLock|((Play|Queue|Hist){1}Item)|SongTree|Sort|((Queue|Edit|Song){1}List)|Text|Refresh|LabelsIcons|TimeBar|(Vol(Bar){0,1})|Cover)[0-9]*</match>
         </context>
 
         <context id="commands" style-ref="keyword">
@@ -145,8 +146,43 @@
             </include>
         </context>
 
+        <context id="name" style-ref="keyword" class="type">
+            <match>Name\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="skin" style-ref="keyword" class="type">
+            <match>Skin\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="skinpath" style-ref="keyword" class="type">
+            <match>SkinPath\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="category" style-ref="keyword" class="type">
+            <match>Category\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
         <context id="title" style-ref="keyword" class="type">
             <match>Title\s*=\s*(.*)</match>
+            <include>
+                <context id="options" sub-pattern="1" style-ref="string"/>
+            </include>
+        </context>
+
+        <context id="volumescroll" style-ref="keyword" class="type">
+            <match>VolumeScroll\s*=\s*(.*)</match>
             <include>
                 <context id="options" sub-pattern="1" style-ref="string"/>
             </include>
