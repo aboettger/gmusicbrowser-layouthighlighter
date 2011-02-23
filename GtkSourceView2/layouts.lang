@@ -91,8 +91,13 @@
         </context>
 
         <context id="keywords" style-ref="keyword">
-          <match>[0-9]*[-_]{0,1}(((Separator|Main){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|FilterPane|Visuals)[0-9]*</match>
+          <match>[0-9]*[-_]{0,1}(((Separator|Main){0,1}MenuItem)|(LayoutItem)|((Toggle){0,1}Button)|ExtraButtons|((H|V){1}Separator)|FilterPane|Visuals|Playlist|Pref|Stars|Filler|ShowHideWidget|Prev|Play|Next|Scale|Total|Title|LockSong|(Lock){0,1}Album|(Lock){0,1}Artist|VolumeIcon|SimpleSearch|Progress|((Queue|Reset|Play){0,1}Filter)|FilterLock|((Play|Queue|Hist){1}Item)|SongTree|Sort|((Queue|Edit|Song){1}List)|Text|Refresh|LabelsIcons)[0-9]*</match>
         </context>
+
+        <context id="commands" style-ref="keyword">
+          <match>AddFilesToPlaylist|AddToLibrary|Browser|ChangeDisplay|ClearQueue|CloseWindow|((Dec|Inc){1}Volume)|DeleteSelected|EditSelectedSongsProperties|(Enqueue(Action|Album|Artist|Files|Selected){1})|Forward|GoToCurrentSong|Hide|InsertFilesInPlaylist|(Open(Custom|Files|Pref|Queue|Search|SongProp){1})|(Play(Listed|Pause){1})|(Popup(Custom|TrayTip){1})|(PrevSong(InPlaylis){0,1})|Quit|Rewind|(Run(PerlCode|SysCmd){1})|Save|Seek|(Set(FocusOn|PlayerLayout|SongLabel|SongRating){1})|(Show(Hide|HideWidget){0,1})|(Tog(AlbumLock|ArtistLock|Mute|SongLock){1})|(Toggle(FullScreen|FullScreenLayout|Random|SongLabel){1})|UnsetSongLabel</match>
+        </context>
+
 
 
 
